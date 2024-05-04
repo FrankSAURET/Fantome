@@ -1,0 +1,222 @@
+﻿<Window x:Class="Fantome.Configuration"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:Fantome"
+		xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+		mc:Ignorable="d"
+		AllowsTransparency="True"
+		Background="Transparent"
+		WindowStyle="None"
+		Title="Configuration de Fantôme" Width="644" WindowStartupLocation="CenterScreen" Foreground="{x:Null}"  Height="461">
+
+    <Window.CommandBindings>
+        <!--1 - Déclarer ici les commandes soit celles des librairies soit des commandes perso.-->
+        <CommandBinding Command="Close" Executed="Close_Executed" />
+    </Window.CommandBindings>
+    <Grid x:Name="GridPrincipale" Margin="1,1,1,0">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="Ligne1" Height="Auto" />
+            <RowDefinition x:Name="Ligne2" Height="Auto" />
+            <RowDefinition x:Name="Ligne3" Height="Auto" />
+            <RowDefinition x:Name="Ligne4" Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--Ligne 1-->
+        <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,2,5,2" Height="185" Width="622" RadiusX="15" RadiusY="15" Panel.ZIndex="-10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Yellow" Offset="1" />
+                    <GradientStop Color="Yellow" />
+                    <GradientStop Color="#F9FFFF9C" Offset="0.5" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <xctk:IconButton x:Name="iconButtonChanger" Content="Changer" HorizontalAlignment="Left" Height="32" Margin="196,60,0,0" VerticalAlignment="Top" Width="156" Foreground="#FF0000C8" BorderBrush="#FF00159B" FontWeight="Bold" Click="iconButtonChanger_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="Images/Dossiers.png" HorizontalAlignment="Left" Margin="0,0,10,0" />
+            </xctk:IconButton.Icon>
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFECE331" Offset="0" />
+                    <GradientStop Color="#FFECE331" Offset="1" />
+                    <GradientStop Color="#FFF1A622" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+        <Label x:Name="label1_1" Content="Dossier des fonds d'écran :" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0000C8" Height="26" Width="161" />
+        <TextBox x:Name="textBoxChemin" HorizontalAlignment="Left" Height="46" Margin="196,9,0,0" TextWrapping="Wrap" Text="Choisissez le dossier contenant vos fonds d'écran en cliquant sur le bouton « Changer » ci-dessous puis vous pourrez mettre à jour la liste." VerticalAlignment="Top" Width="421" Background="{x:Null}" FontWeight="Bold">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <Label x:Name="label1_2" Content="Fond neutre :" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0000C8" Height="26" Width="161" />
+        <TextBox x:Name="textBoxFondNeutre" HorizontalAlignment="Left" Height="46" Margin="196,98,0,0" TextWrapping="Wrap" Text="Vous pouvez choisir ici un fond d'écran qui sera accessible par la fonction « Mettre le fond neutre » du menu contextuel." VerticalAlignment="Top" Width="421" Background="{x:Null}" FontWeight="Bold">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
+        <xctk:IconButton x:Name="iconButtonChangerFondNeutre" Content="Changer" HorizontalAlignment="Left" Height="32" Margin="196,149,0,0" VerticalAlignment="Top" Width="156" Foreground="#FF0000C8" BorderBrush="#FF00159B" FontWeight="Bold" Click="iconButtonChangerFondNeutre_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="/Images/Fantome.png" HorizontalAlignment="Left" Margin="0,0,10,0" />
+            </xctk:IconButton.Icon>
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFECE331" Offset="0" />
+                    <GradientStop Color="#FFECE331" Offset="1" />
+                    <GradientStop Color="#FFF1A622" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+
+        <CheckBox x:Name="checkBoxListerSousDossiers" Content="Lister aussi les sous dossiers." HorizontalAlignment="Left" VerticalAlignment="Center" Background="#FFF4FF04" BorderBrush="#FF0000C8" Foreground="#FF0000C8" FontWeight="Bold" Margin="10,31,0,96" IsChecked="True" Height="15" Width="181" Click="checkBoxListerSousDossiers_Click" />
+        <!--Ligne 2-->
+        <Rectangle Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,2,5,2" Height="64" Width="625" RadiusX="15" RadiusY="15" Panel.ZIndex="-10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF63F9F2" Offset="1" />
+                    <GradientStop Color="#FF63F9F2" />
+                    <GradientStop Color="#FF2DCFC7" Offset="0.498" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label x:Name="label2_1" Content="Changer le fond d'écran toutes les :" HorizontalAlignment="Left" Height="31" Margin="161,8,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" Width="209" Foreground="#FF0000C8" />
+        <xctk:IntegerUpDown x:Name="IntegerUpDownIntervalleChangement" HorizontalAlignment="Left" Margin="370,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="54" Minimum="1" Maximum="60" DefaultValue="3" Height="20" DisplayDefaultValueOnEmptyText="True" />
+        <ComboBox x:Name="comboBoxUniteIntervalChangement" HorizontalAlignment="Left" Height="22" Margin="429,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="#FF039191" BorderBrush="#FF042783">
+            <ComboBoxItem Content="Minutes" IsSelected="True" />
+            <ComboBoxItem Content="Heures" />
+            <ComboBoxItem Content="Jours" />
+            <ComboBoxItem Content="Seulement au démarrage" />
+        </ComboBox>
+        <Label x:Name="label2_2" Content="Remise à jour automatique du contenu du répertoire tous les :" HorizontalAlignment="Left" Height="31" Margin="10,35,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.272,0.677" Width="360" Foreground="#FF0000C8" />
+        <xctk:IntegerUpDown x:Name="IntegerUpDownIntervalleMaJ" HorizontalAlignment="Left" Margin="370,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="54" Minimum="1" Maximum="30" DefaultValue="3"  DisplayDefaultValueOnEmptyText="True" Height="20" />
+        <ComboBox x:Name="comboBoxUniteIntervalMaJ" HorizontalAlignment="Left" Height="22" Margin="429,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="#FF039191" BorderBrush="#FF042783">
+            <ComboBoxItem Content="Jours" />
+            <ComboBoxItem Content="Mois" />
+            <ComboBoxItem Content="Uniquement si la liste est vide" IsSelected="True" />
+        </ComboBox>
+        <xctk:IconButton x:Name="iconButtonMaJ" Content="Mettre à jour la liste des fonds" HorizontalAlignment="Left" Height="32" Margin="370,60,0,0" VerticalAlignment="Top" Width="247" Foreground="#FF0000C8" BorderBrush="#FF00159B" FontWeight="Bold" Click="buttonMiseAJourListe_Click">
+            <xctk:IconButton.Icon>
+                <Image Source="Images/Changer2.png" HorizontalAlignment="Left" Margin="0,0,10,0" />
+            </xctk:IconButton.Icon>
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFECE331" Offset="0" />
+                    <GradientStop Color="#FFECE331" Offset="1" />
+                    <GradientStop Color="#FFF1A622" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+        <!--Ligne 3-->
+        <Rectangle Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,2,5,2" Height="71" Width="625" RadiusX="15" RadiusY="15" Panel.ZIndex="-10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#F9D1AAFF" Offset="1" />
+                    <GradientStop Color="#F9D1AAFF" />
+                    <GradientStop Color="#F9A961FF" Offset="0.5" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Grid.Row="2" x:Name="labelEditeurNom" Content="Choisissez ici l'éditeur de fond qui sera lancé par « Editer cette image ». --&gt;" HorizontalAlignment="Left" HorizontalContentAlignment="Right"  Margin="5,38,0,0" VerticalAlignment="Top" Foreground="#FF0000C8" FontWeight="Bold" Height="26" Width="491" />
+        <Label Grid.Row="2" x:Name="labelEditeurInfo" Content="Vous pourrez ainsi éditer directement l'image courante avec un clic droit." HorizontalAlignment="Left"  Margin="5,7,0,0" VerticalAlignment="Top" Foreground="#FF0000C8" FontWeight="Bold" Height="26" Width="491" />
+        <xctk:IconButton Grid.Row="2" x:Name="iconButtonEditeur"  HorizontalAlignment="Left" Margin="501,10,0,0"  VerticalAlignment="Top" Foreground="#FF0000C6" FontWeight="Bold" Width="116" Height="57" Click="iconButtonEditeur_Click">
+            <TextBlock Text="Changer d'éditeur" TextWrapping="Wrap" Width="52" Height="36" Margin="5,0,0,0" />
+            <xctk:IconButton.Icon>
+                <Image Source="/Images/PointInterrogation.png"  Margin="2" />
+            </xctk:IconButton.Icon>
+
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#F9A961FF" Offset="0" />
+                    <GradientStop Color="#F9A961FF" Offset="1" />
+                    <GradientStop Color="#F98B48DC" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+        <!--Ligne 4 Zone 1-->
+        <Rectangle Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,2,0,0" Height="91" Width="454" RadiusX="15" RadiusY="15" Panel.ZIndex="-10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFF9B84" Offset="1" />
+                    <GradientStop Color="#FFFF9B84" />
+                    <GradientStop Color="#FFFFB7A6" Offset="0.5" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,0" Height="67" Width="136" Stroke="#FF001C99" StrokeThickness="2">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Images/Fondec.jpg" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <RadioButton Grid.Row="3" GroupName="RadioButtonCouleur" x:Name="HG" Margin="10,12,605,93" Checked="HG_Checked" Background="Red" />
+        <RadioButton Grid.Row="3" GroupName="RadioButtonCouleur" Name="HD" Margin="132,12,483,95" Checked="HD_Checked" Background="Red" />
+        <RadioButton Grid.Row="3" GroupName="RadioButtonCouleur" Name="BG" Margin="10,66,605,41" Checked="BG_Checked" Background="Red" />
+        <RadioButton Grid.Row="3" GroupName="RadioButtonCouleur" Name="BD" Margin="132,65,483,41" Checked="BD_Checked" Background="Red" />
+        <RadioButton Grid.Row="3" GroupName="RadioButtonCouleur" Name="Moy" Margin="159,74,290,31" IsChecked="True" Content="Moyenne des 4 couleurs." Foreground="#FF0000C8" FontWeight="Bold" Checked="Moy_Checked" />
+        <TextBlock x:Name="textBlockPointDeCouleur" HorizontalAlignment="Left" Margin="159,7,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" Foreground="#FF0000C8" Height="67" ><Run Text="Choisissez comme couleur de fond soit l'un des angles de l'image (en cliquant l'un des 4 points rouges à gauche) soit la moyenne des 4 couleurs en cliquant ci-dessous" /><Run Text="." /></TextBlock>
+
+        <!--Ligne 4 Zone 2-->
+        <Rectangle Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="469,2,5,2" Height="91" Width="158" RadiusX="15" RadiusY="15" Panel.ZIndex="-10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF06BC57" Offset="1" />
+                    <GradientStop Color="#FF06BC57" />
+                    <GradientStop Color="#FF1AB8A9" Offset="0.5" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <xctk:IconButton x:Name="iconButtonAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="478,10,0,0" Grid.Row="3" VerticalAlignment="Top"  Foreground="#FF0000C6" FontWeight="Bold" Height="25" Command="Close" Width="139">
+            <xctk:IconButton.Icon>
+                <Image Source="/Images/Quitter2.png" />
+            </xctk:IconButton.Icon>
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFEC0202" Offset="0" />
+                    <GradientStop Color="#FFEC0202" Offset="1" />
+                    <GradientStop Color="#FFA40404" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+        <xctk:IconButton x:Name="iconButtonEnregistrer"  HorizontalAlignment="Left" Margin="478,42,0,0" Grid.Row="3" VerticalAlignment="Top" Foreground="#FF0000C6" FontWeight="Bold" Height="44" TextOptions.TextFormattingMode="Display" Click="iconButtonEnregistrer_Click" Width="139">
+            <TextBlock Text="Enregistrer les modifications" TextWrapping="Wrap" />
+            <xctk:IconButton.Icon>
+                <Image Source="Images/ok.png" Margin="0,0,10,0" HorizontalAlignment="Left" />
+            </xctk:IconButton.Icon>
+            <xctk:IconButton.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF027E02" Offset="0" />
+                    <GradientStop Color="#FF027E02" Offset="1" />
+                    <GradientStop Color="Lime" Offset="0.5" />
+                </LinearGradientBrush>
+            </xctk:IconButton.Background>
+        </xctk:IconButton>
+        <CheckBox x:Name="checkBoxFondNeutreAuDemarrage" Content="" HorizontalAlignment="Left" Margin="357,149,0,0" VerticalAlignment="Top" Height="21" FontWeight="Bold" Foreground="#FF0000C6" IsChecked="True" Width="20" RenderTransformOrigin="0.55,1.389" Background="#00F4FF04" Click="checkBoxFondNeutreAuDemarrage_Click" />
+        <TextBlock x:Name="textBlockFondNeutreAuDemarrage" Foreground="#FF0000C8" FontWeight="Bold" HorizontalAlignment="Left" Margin="377,149,0,0" TextWrapping="Wrap" Text="Toujours mettre ce fond au démarrage de Fantôme." VerticalAlignment="Top" Height="31" Width="240"/>
+
+    </Grid>
+</Window>

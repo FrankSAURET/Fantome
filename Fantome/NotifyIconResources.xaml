@@ -1,0 +1,121 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:tb="http://www.hardcodet.net/taskbar"
+					xmlns:local="clr-namespace:Fantome">
+
+	<!--Mise en forme du menu-->
+	<!--Dégradé interne-->
+	<LinearGradientBrush x:Key="MenuBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FFB67604" Offset="0" />
+		<GradientStop Color="#FFFFF3DD" Offset="1" />
+		<GradientStop Color="#FFF9CE3C" Offset="0.06" />
+		<GradientStop Color="#FFFFD892" Offset="0.06" />
+	</LinearGradientBrush>
+
+	<Style TargetType="{x:Type ContextMenu}">
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ContextMenu}">
+					<Grid>
+						<Border Background="{DynamicResource MenuBackground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20,0,20,0">
+							<ScrollViewer Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}" Uid="ScrollViewer_9" CanContentScroll="True">
+								<ItemsPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.DirectionalNavigation="Cycle" />
+							</ScrollViewer>
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="MenuItem">
+		<Setter Property="TextElement.FontSize" Value="20" />
+	</Style>
+
+	<!--Définition du menu contextuel-->
+	<ContextMenu x:Shared="false" x:Key="SysTrayMenu">
+		<MenuItem Header="{Binding NomDuFondCourant}" x:Name="NomImage" FontWeight="Bold" />
+		<MenuItem Header="Changer le fond | (Clic gauche)" Command="{Binding ChangerFond}" Foreground="Navy">
+			<MenuItem.Icon>
+				<Image Source="/Images/Changer2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<MenuItem Header="Choisir un fond" Command="{Binding ChoisirFond}" Foreground="LimeGreen">
+			<MenuItem.Icon>
+				<Image Source="/Images/Choisir2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem Header="Configurer" Command="{Binding Configurer}" Foreground="LightSlateGray" FontWeight="Bold">
+			<MenuItem.Icon>
+				<Image Source="/Images/Configurer2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem Header="Déplacer vers le dossier préféré" Command="{Binding DeplacerPref}" FontWeight="Bold" Foreground="Fuchsia">
+			<MenuItem.Icon>
+				<Image Source="/Images/DeplacerPref2.png" Stretch="Fill" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<MenuItem Header="Editer cette image" Command="{Binding Editer}" x:Name="EditerImage" Foreground="#FF013C81" FontWeight="Bold">
+			<MenuItem.Icon>
+				<Image Source="/Images/Editer2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<MenuItem Header="Supprimer cette image" Command="{Binding Supprimer}" Foreground="#FFD60202" FontWeight="Bold">
+			<MenuItem.Icon>
+				<Image Source="/Images/Supprimer2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<MenuItem Header="Recharger cette image" Command="{Binding Recharger}">
+			<MenuItem.Icon>
+				<Image Source="/Images/Recharger2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem Header="{Binding InfoFiger}" Command="{Binding Figer}" FontWeight="DemiBold" Foreground="DeepSkyBlue">
+			<MenuItem.Icon>
+				<Image Source="/Images/Figer2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<MenuItem Header="Mettre le fond neutre" Command="{Binding FondNeutre}" FontWeight="DemiBold" Foreground="DodgerBlue">
+			<MenuItem.Icon>
+				<Image Source="/Images/neutre.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem Header="A propos" Command="{Binding APropos}" FontWeight="DemiBold" Foreground="Aqua">
+			<MenuItem.Icon>
+				<Image Source="/Images/APropos.png" Stretch="UniformToFill" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem Header="Quitter Fantôme" Command="{Binding Quitter}" Foreground="Crimson">
+			<MenuItem.Icon>
+				<Image Source="/Images/Quitter2.png" />
+			</MenuItem.Icon>
+		</MenuItem>
+		<Separator />
+		<MenuItem  Header="{Binding InfoChgt}" Name="MenuItemInformation">
+		</MenuItem>
+	</ContextMenu>
+
+	<!--Définition de l'icône du tray-->
+	<tb:TaskbarIcon x:Key="NotifyIcon"
+					IconSource="{Binding IcôneSysTray}"
+					ContextMenu="{StaticResource SysTrayMenu}"
+					LeftClickCommand="{Binding ChangerFond}"
+					DoubleClickCommand="{Binding Editer}">
+
+		<!-- self-assign a data context (could also be done programmatically) -->
+		<tb:TaskbarIcon.DataContext>
+			<local:NotifyIconViewModel />
+		</tb:TaskbarIcon.DataContext>
+
+		<!--Lancement de la bulle d'info-->
+		<tb:TaskbarIcon.TrayToolTip>
+			<local:BulleInfo
+				Opacity="1" />
+		</tb:TaskbarIcon.TrayToolTip>
+	</tb:TaskbarIcon>
+</ResourceDictionary>

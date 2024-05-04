@@ -1,0 +1,3 @@
+﻿Programme : C:\Program Files (x86)\Electropol\Fantôme
+Configuration.xml : AppData\Local\VirtualStore\Program Files (x86)\Electropol\Fantôme
+Liste de fond.txt : AppData\Local\VirtualStore\Program Files (x86)\Electropol\Fantôme

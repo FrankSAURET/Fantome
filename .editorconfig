@@ -1,0 +1,7 @@
+﻿[*.{cs,vb}]
+
+# IDE0048: Ajouter des parenthèses pour plus de clarté
+dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary:suggestion
+
+# IDE0055: Corriger la mise en forme
+dotnet_diagnostic.IDE0055.severity = silent

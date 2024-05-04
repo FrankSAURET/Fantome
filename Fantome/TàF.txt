@@ -1,0 +1,19 @@
+﻿A faire
+
+$ Voir pour le dossier avec les paramètres ==> virtual store
+$ mettre à jour la date de dernier changement de la liste des fonds.
+$ Revoir la bannière
+($ Le nom aprés édition n'est pas le bon) apparemment ok
++ Rajouter la fonction ouvrir le dossier de l'image
++ Rajouter la fonction ouvrir la liste des fonds d'écran
+$ Ecran gris ? pourquoi ?
+
++ Retour au lancement sur une liste d'écran par défaut
++ Ajouter une liste de dossier favoris avec chacun ça liste de fichier
++ Forcer le démarrage sur le fond neutre
+
+Fait
++ Rajouter Quitter sur configuration en fait c'est "annuler""
+$ Ne mettre dans la liste des fonds que les images
++ Désormais le changement de couleur de fond d'écran n'affecte pas le changement des autres couleurs (bordures, fenêtres ...)
+$ Bug fond d'écran préféré qui ne s'affiche pas : corrigé
